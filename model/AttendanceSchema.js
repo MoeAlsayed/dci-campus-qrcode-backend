@@ -11,6 +11,7 @@ const AttendanceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  student_name: String,
   student_class: String,
   date: {
     type: Date,
