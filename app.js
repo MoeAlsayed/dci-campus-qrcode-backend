@@ -12,7 +12,14 @@ mongoose.connect('mongodb://saimon:dci123@ds119268.mlab.com:19268/students');
 // const Studen = require("./model/StudentsSchema");
 
 const Attendance = require("./model/AttendanceSchema");
-app.get("/", (req, res) => {
+app.get("/attendance", (req, res) => {
+
+    Attendance.find((err, data) => {
+        if (err) console.log(err);
+
+        // saved!
+        res.send(data)
+    })
 
 });
 
@@ -24,15 +31,6 @@ app.post("/add-attendance", (req, res) => {
         date_arrived,
         date_left
     } = req.body
-
-    /* const newAttendance = new ({
-        student_id,
-        student_class,
-        comment,
-        date_arrived,
-        date_left
-    })
-    newAttendance.save() */
 
     Attendance.create({
         student_id,
